@@ -1,0 +1,6 @@
+.bail on
+.prompt '🦆> '
+
+set threads = getenv('SLURM_CPUS_PER_TASK');
+set memory_limit = concat(getenv('SLURM_MEM_PER_NODE'), 'MB');
+set enable_progress_bar = true;

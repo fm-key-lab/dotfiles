@@ -1,3 +1,5 @@
+#!/bin/bash
+
 export APPTAINERENV_NXF_DEBUG="/ptmp/$USER/apptainer-debug"
 export SINGULARITYENV_NXF_DEBUG="/ptmp/$USER/apptainer-debug" # backwards compatibility
 

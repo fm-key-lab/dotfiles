@@ -1,3 +1,5 @@
+#!/bin/bash
+
 #  append the history file after each session
 shopt -s histappend
 

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 alias ll='ls -lah'
 
 alias ..="cd .."
@@ -7,22 +9,22 @@ alias ...="cd ../.."
 alias rm="rm -i"
 alias mv="mv -i"
 
-# misc
+# Lab
+alias dev='cd $HOME/dev'
+alias key='cd $GROUP_HOME'
+alias me='cd $HOME'
+
+# SLURM
+alias srund="srun --mem=16G --time=12:00:00 -p datatransfer --pty bash"
+alias sruni="srun -n 1 -p interactive --mem=16G --cpus-per-task=8 --time=1:58:59 --pty bash"
+
+# git
 alias commit='git commit'
 alias push='git push'
 alias st='git st'
 alias status='git status'
 alias pull='git pull'
 alias gping="ssh -T git@github.com"
-
-# Lab
-alias dev="cd $HOME/dev"
-alias key="cd $GROUP_HOME"
-alias me='cd $HOME'
-
-# SLURM
-alias srund="srun --mem=16G --time=12:00:00 -p datatransfer --pty bash"
-alias sruni="srun -n 1 -p interactive --mem=16G --cpus-per-task=8 --time=1:58:59 --pty bash"
 
 # Other software
 alias vsps="ps auwx | grep '[v]scode-server'" # Check for running vscode-server processes

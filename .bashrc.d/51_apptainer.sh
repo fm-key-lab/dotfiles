@@ -1,4 +1,4 @@
-# Containers
+#!/bin/bash
 
 # TODO: Use a config file, set up per descriptions [here](https://apptainer.org/docs/user/main/bind_paths_and_mounts.html#bind-paths-and-mounts)
 

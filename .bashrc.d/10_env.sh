@@ -1,4 +1,4 @@
-test -s ~/.envrc && . ~/.envrc || true
+#!/bin/bash
 
 #
 # Directories

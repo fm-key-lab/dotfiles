@@ -1,0 +1,6 @@
+solver: libmamba
+envs_dirs:
+  - ~/conda-envs
+channels:
+  - conda-forge
+  - nodefaults

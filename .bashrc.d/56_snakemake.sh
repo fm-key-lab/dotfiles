@@ -1,9 +1,5 @@
 #!/bin/bash
 
-# 
-# Snakemake
-#
-
 # Default profile:
 #
 #   > The default profile to use when no --profile argument is specified can also 
@@ -14,7 +10,16 @@
 #     specifying and alternative profile you can provide the special value none, 
 #     i.e. --profile none.
 
-export SNAKEMAKE_PROFILE="$GROUP_HOME/config/snakemake/profiles/viper"
+case "$HOSTNAME" in
+  # raven01, raven02, ...
+  raven* )
+    export SNAKEMAKE_PROFILE="$GROUP_HOME/config/snakemake/profiles/raven"
+  ;;
+  # viper01, viper02, ...
+  viper* )
+    export SNAKEMAKE_PROFILE="$GROUP_HOME/config/snakemake/profiles/viper"
+  ;;
+esac
 
 # Temp directory:
 # 

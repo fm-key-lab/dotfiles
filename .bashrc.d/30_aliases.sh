@@ -30,35 +30,39 @@ alias gping="ssh -T git@github.com"
 alias vsps="ps auwx | grep '[v]scode-server'" # Check for running vscode-server processes
 
 case "$HOSTNAME" in
-    meerkatze ) # meerkatze
-        alias rawdata='cd /mnt/rawdata' # Raw data directory
-        alias dist='echo Debian'        # Get Linux distribution
-    ;;
-    logan* ) # logan-1
-        alias rawdata='cd /mnt/rawdata' # Raw data directory
-        alias dist='echo Debian'        # Get Linux distribution
-    ;;
-    raven* ) # raven01, raven02, ...
-        alias kls='klist -c /tmp/krb5cc_$(id -u)_raven*' # Get Kerberos ticket
-        alias dist='echo $ID_LIKE'                        # Get Linux distribution (SUSE)
-    ;;
-    viper* ) # viper01, viper02, ...
-        alias kls='klist -c /tmp/krb5cc_$(id -u)_viper*' # Get Kerberos ticket
-    ;;
-    "" )
-        # HOSTNAME is undefined
-    ;;
-    * ) # Linux default
-        # When none of the hostnames match
-        alias arch='uname -m'
+  # meerkatze
+  meerkatze )
+    alias rawdata='cd /mnt/rawdata' # Raw data directory
+    alias dist='echo Debian'        # Get Linux distribution
+  ;;
+  # logan-1
+  logan* )
+    alias rawdata='cd /mnt/rawdata' # Raw data directory
+    alias dist='echo Debian'        # Get Linux distribution
+  ;;
+  # raven01, raven02, ...
+  raven* )
+    alias kls='klist -c /tmp/krb5cc_$(id -u)_raven*' # Get Kerberos ticket
+    alias dist='echo $ID_LIKE'                        # Get Linux distribution (SUSE)
+  ;;
+  # viper01, viper02, ...
+  viper* )
+    alias kls='klist -c /tmp/krb5cc_$(id -u)_viper*' # Get Kerberos ticket
+  ;;
+  # HOSTNAME is undefined
+  "" )
+  ;;
+  # Linux default
+  * ) 
+    alias arch='uname -m'
 
-        # Useful websites
-        alias mpg_resources="open https://rena.mpdl.mpg.de/rena/"
-        alias oreilly="open https://learning.oreilly.com/home/"
-        alias mm="open https://minervamessenger.mpdl.mpg.de"
-        alias email="open https://webmail.mpiib-berlin.mpg.de"
-        alias docs="open https://docs.mpcdf.mpg.de/doc/computing/viper-user-guide.html"
-        alias helpdesk="open https://helpdesk.mpcdf.mpg.de/mpcdf/SelfService/"
-        alias nextcloud="open https://transfer.mpiib-berlin.mpg.de/"
-    ;;
+    # Useful websites
+    alias mpg_resources="open https://rena.mpdl.mpg.de/rena/"
+    alias oreilly="open https://learning.oreilly.com/home/"
+    alias mm="open https://minervamessenger.mpdl.mpg.de"
+    alias email="open https://webmail.mpiib-berlin.mpg.de"
+    alias docs="open https://docs.mpcdf.mpg.de/doc/computing/viper-user-guide.html"
+    alias helpdesk="open https://helpdesk.mpcdf.mpg.de/mpcdf/SelfService/"
+    alias nextcloud="open https://transfer.mpiib-berlin.mpg.de/"
+  ;;
 esac

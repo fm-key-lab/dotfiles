@@ -1,13 +1,18 @@
 # Lab dotfiles
 
+On a Unix-like OS, files or folders beginning with a dot character are commonly called **dotfiles**. Dotfiles are "hidden" from many filesystem commands and commonly used for storing user or application configurations.
+
+`yadm` is [Yet Another Dotfiles Manager](https://yadm.io) that mostly behaves as a plug-in replacement for Git commands. The most important difference between `yadm` and Git is that `yadm` can only track a single repository: `$HOME`.
+
+This repository holds the lab's configuration dotfiles and is meant to be used with `yadm`.
+
 ## Usage
 
-To use the lab's `yadm` executable, use the corresponding environment module (`module load yadm`).
-
-`yadm` is designed to run from your `HOME` directory. Add the lab's configuration dotfiles to your `HOME`:
+The lab maintains an installation of `yadm`, available as an environment module. To add the lab's configuration dotfiles to your `$HOME` directory:
 
 ```bash
-# cd $HOME <- Not necessary: Will automatically act on $HOME
+module load yadm
+# cd $HOME <- Not necessary: Will automatically act on $HOME.
 yadm clone git@github.com:fm-key-lab/dotfiles.git
 yadm status
 ```
@@ -16,13 +21,15 @@ yadm status
 
 > The clone command will attempt to check out all files that exist in the repository. If a file already exists locally and has content that differs from the one in the repository, the local file will be left unmodified and you’ll have to review and resolve the differences.
 
-To overwrite existing dotfiles with those from this repo, use
+To overwrite existing dotfiles with those from this repo:
 
 ```bash
 yadm checkout "$HOME"
 ```
 
-Contribute to the lab's configuration dotfiles:
+## Contributing
+
+To contribute to the lab's configuration dotfiles:
 
 ```bash
 yadm checkout -b <branch-name>

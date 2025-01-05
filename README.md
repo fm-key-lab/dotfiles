@@ -17,6 +17,10 @@ yadm clone git@github.com:fm-key-lab/dotfiles.git
 yadm status
 ```
 
+## Handling file conflicts
+
+### Overwrite
+
 [Note](https://yadm.io/docs/getting_started) that:
 
 > The clone command will attempt to check out all files that exist in the repository. If a file already exists locally and has content that differs from the one in the repository, the local file will be left unmodified and you’ll have to review and resolve the differences.
@@ -26,6 +30,18 @@ To overwrite existing dotfiles with those from this repo:
 ```bash
 yadm checkout "$HOME"
 ```
+
+### Ignore
+
+For many dotfiles, you will prefer to use your own versions:
+
+> **How can I configure ignored files?**
+> 
+> By default, yadm is configured to ignore untracked files when displaying a status. This does not prevent you from adding untracked files. However, if you would like to prevent some files from being added accidentally, you can configure them to be ignored.
+> 
+> If you add a `.gitignore` file to your `$HOME` directory (or subdirectories) you can have those patterns ignored by yadm. This works exactly like it does for Git. Be sure to add these `.gitignore` files to your repo, so they can be synced along with your other configurations.
+> 
+> Another option is to add patterns to `$HOME/.local/share/yadm/repo.git/info/exclude`. If you use this file, be sure to add your patterns above any `yadm-auto-excludes` line, as all lines below this can be overwritten by yadm when encrypting data.
 
 ## Contributing
 
@@ -37,3 +53,5 @@ yadm add <contributions>
 yadm commit -m <commit msg>
 yadm push -u origin <branch-name>
 ```
+
+Please consider using a linting tool like [ShellCheck](https://www.shellcheck.net) before opening a PR.

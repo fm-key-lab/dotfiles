@@ -8,7 +8,7 @@ This repository holds the lab's configuration dotfiles and is meant to be used w
 
 ## Usage
 
-The lab maintains an installation of `yadm`, available as an environment module. To add the lab's configuration dotfiles to your `$HOME` directory:
+The lab maintains an installation of `yadm`, available via environment module. To add the lab's configuration dotfiles to your `$HOME` directory:
 
 ```bash
 module load yadm

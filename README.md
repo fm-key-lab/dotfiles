@@ -17,6 +17,8 @@ yadm clone git@github.com:fm-key-lab/dotfiles.git
 yadm status
 ```
 
+As with Git, use `yadm pull` to sync.
+
 ## Handling file conflicts
 
 ### Overwrite

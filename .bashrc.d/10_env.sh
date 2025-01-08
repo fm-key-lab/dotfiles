@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export EDITOR="/usr/bin/vi"
+
 #
 # Directories
 #
@@ -33,5 +35,8 @@ export JVM_MEM="-Xmx4g"
 export SLURM_CPUS_PER_TASK=2
 export SLURM_MEM_PER_NODE=1200
 
-# Executable paths
+#
+# Executables
+#
+
 export DUCKDB="$GROUP_HOME/opt/duckdb/1.0.0"

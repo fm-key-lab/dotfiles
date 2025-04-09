@@ -38,3 +38,26 @@ esac
 #     scripts and wrappers to store temporary data (as it is mirrored into $TMPDIR, 
 #     $TEMP, and $TMP for the executed subprocesses). If this argument is not 
 #     specified at all, Snakemake just uses the tmpdir resource as outlined above.
+
+# WebDAV storage plug-in:
+#
+# URL: https://snakemake.github.io/snakemake-plugin-catalog/plugins/storage/webdav.html
+
+# For MPIIB NextCloud
+export SNAKEMAKE_STORAGE_WEBDAV_USERNAME=""
+export SNAKEMAKE_STORAGE_WEBDAV_PASSWORD=""
+
+extract_netrc_to_smk_webdav() {
+  export SNAKEMAKE_STORAGE_WEBDAV_USERNAME="$USER"
+  export SNAKEMAKE_STORAGE_WEBDAV_PASSWORD=$(awk '
+    $1 == "machine" && $2 == "transfer.mpiib-berlin.mpg.de" { in_machine = 1 }
+    in_machine && $1 == "password" { print $2; exit }
+  ' ~/.netrc)
+}
+
+case "$HOSTNAME" in
+  # raven01, raven02, ..., viper01, viper02, ...
+  raven*|viper* )
+    extract_netrc_to_smk_webdav
+  ;;
+esac

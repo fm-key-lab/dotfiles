@@ -31,9 +31,17 @@ export JVM_MEM="-Xmx4g"
 #       can lead to unexpected behavior when running jobs on the login nodes,
 #       e.g., when using `srun` with `--cpus-per-task=8` will lead to warning: 
 #       `srun: Job step's --cpus-per-task value exceeds that of job (8 > 2). Job step may never run.`
+#
+#       In most cases, this will not be fatal. An exception is when using
+#       the RVS/JNaaS on MPCDF.
+#
 #       It is recommended to set this variable in the job script itself.
 export SLURM_CPUS_PER_TASK=2
 export SLURM_MEM_PER_NODE=1200
+
+# Default location for Slurm job logs
+export SLURM_LOG="/ptmp/${USER}/slurm/logs"
+mkdir -p $SLURM_LOG
 
 #
 # Executables

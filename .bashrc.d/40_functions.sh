@@ -14,21 +14,21 @@ function Activate {
   source "$HOME/dev/envs/$1/.venv/bin/activate"
 } 
 
-function cpdir {
+function cp_dir {
   while getopts ":h-:" opt; do
     case $opt in
       h)
-        echo "Usage: cpdir <source_directory> <destination_directory>"
+        echo "Usage: cp_dir <source_directory> <destination_directory>"
         echo "Copies a directory and its contents to the specified destination."
-        echo "Example: cpdir /path/to/source /path/to/destination"
+        echo "Example: cp_dir /path/to/source /path/to/destination"
         return 0
         ;;
       -)
         case "${OPTARG}" in
           help)
-            echo "Usage: cpdir <source_directory> <destination_directory>"
+            echo "Usage: cp_dir <source_directory> <destination_directory>"
             echo "Copies a directory and its contents to the specified destination."
-            echo "Example: cpdir /path/to/source /path/to/destination"
+            echo "Example: cp_dir /path/to/source /path/to/destination"
             return 0
             ;;
           *)

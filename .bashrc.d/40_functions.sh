@@ -44,6 +44,16 @@ function cp_dir {
     esac
   done
   shift $((OPTIND - 1))
+
+  [ -d "$1" ] || { echo "Directory '$1' does not exist."; exit 1; }
+
+  if [ ! -d "$2" ]; then
+      read -p "Directory '$2' does not exist. Create it? (y/n): " response
+      if [[ $response =~ ^[Yy]$ ]]; then
+          mkdir -p "$2"
+      fi
+  fi
+
   rsync -au --progress "$1" "$2"
 }
 

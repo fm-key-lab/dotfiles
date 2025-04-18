@@ -45,7 +45,7 @@ function cp_dir {
   done
   shift $((OPTIND - 1))
 
-  [ -d "$1" ] || { echo "Directory '$1' does not exist."; exit 1; }
+  [ -d "$1" ] || { echo "Error: Directory '$1' does not exist."; false; }
 
   if [ ! -d "$2" ]; then
       read -p "Directory '$2' does not exist. Create it? (y/n): " response

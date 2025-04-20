@@ -2,7 +2,7 @@
 
 On a Unix-like OS, files or folders beginning with a dot character are commonly called **dotfiles**. Dotfiles are "hidden" from many filesystem commands and commonly used for storing user or application configurations.
 
-`yadm` is [Yet Another Dotfiles Manager](https://yadm.io) that mostly behaves as a plug-in replacement for Git commands. The most important difference between `yadm` and Git is that `yadm` can only track a single repository: `$HOME`.
+`yadm` is [Yet Another Dotfiles Manager](https://yadm.io) that mostly behaves as a drop-in replacement for Git commands. The most important difference between `yadm` and Git is that `yadm` can only track a single repository: `$HOME`.
 
 This repository holds the lab's configuration dotfiles and is meant to be used with `yadm`.
 

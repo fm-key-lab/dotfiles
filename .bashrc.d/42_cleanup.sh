@@ -1,4 +1,6 @@
 #!/bin/bash
+# shellcheck disable=SC2086
+# shellcheck disable=SC2162
 
 #--------------------------------------------------------------------------
 # Clean up the Conda cache

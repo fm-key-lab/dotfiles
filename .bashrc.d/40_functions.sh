@@ -1,15 +1,51 @@
 #!/bin/bash
+# shellcheck disable=SC2086
 
-# Usage: 
-# $ bib https://doi.org/10.1007/978-0-387-21736-9
+#
+# Overwrites
+#
+
+# verbose cd
+function vcd { builtin cd "$@" || return && echo -e "\n\033[1;30m📁 $OLDPWD \033[0m\033[1;32m→\033[0m \033[1;32m$PWD\033[0m\n"; }
+
+# Allow use of 'cd ...' to cd up 2 levels, 'cd ....' up 3, etc. (like 4NT/4DOS)
+# Usage: cd ..., etc.
+# Adapted from: Example 16-15, bash Cookbook 2e, Albing & Vossen, 2017.
+function cd {
+  # shellcheck disable=SC1007
+  local option= length= count= cdpath= i=
+  if [ "$1" = "-P" ] || [ "$1" = "-L" ]; then
+    option="$1"
+    shift
+  fi
+  if [ -n "$1" ] && [ "${1:0:3}" = '...' ] && [ "$1" = "${1%/*}" ]; then
+    length=${#1}
+    count=2
+    for ((i=count; i<=length; i++)); do
+      cdpath="${cdpath}../"
+    done
+    vcd $option "$cdpath"
+  elif [ -n "$1" ]; then
+    vcd $option "$*"
+  else
+    vcd $option
+  fi
+} # end of cd
+function mv { builtin mv -i; }
+function rm { builtin rm -i; } # Can use -f to override interactive nags for destructive disk writes
+
+#
+# Misc
+#
+
+# Adapted from: https://github.com/davidagraf/doi2bib2/issues/94#issuecomment-2325203272
+# Usage: bib https://doi.org/10.1007/978-0-387-21736-9
 function bib {
-  # Adapted from:
-  # https://github.com/davidagraf/doi2bib2/issues/94#issuecomment-2325203272
   curl --silent -LH "Accept: application/x-bibtex" "$1" | \
     sed -E -e 's/}$/\n}/g' -e 's/^\s//g' -e 's/,\s([a-zA-Z]+=)/,\n    \1/g'
 }
 
-function Activate {
+function activate_venv {
   # shellcheck source=/dev/null
   source "$HOME/dev/envs/$1/.venv/bin/activate"
 } 
@@ -47,7 +83,7 @@ function cp_dir {
 
   [ -d "$1" ] || { echo "Error: Directory '$1' does not exist."; false; } \
   && if [ ! -d "$2" ]; then
-      read -p "Directory '$2' does not exist. Create it? (y/n): " response
+      read -rp "Directory '$2' does not exist. Create it? (y/n): " response
       if [[ $response =~ ^[Yy]$ ]]; then
           mkdir -p "$2"
       fi
@@ -55,7 +91,7 @@ function cp_dir {
   && rsync -au --progress "$1" "$2"
 }
 
-function jobend {
+function job_end {
   if [ -z "$1" ]; then
     jobid=$(squeue --noheader -o %A -u "$USER" | head -n 1)
   else

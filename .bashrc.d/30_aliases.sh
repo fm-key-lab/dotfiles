@@ -1,18 +1,8 @@
 #!/bin/bash
 
 alias ll='ls -lah'
-
 alias ..="cd .."
 alias ...="cd ../.."
-
-# Can use -f to override interactive nags for destructive disk writes
-alias rm="rm -i"
-alias mv="mv -i"
-
-# Lab
-alias dev='cd $HOME/dev'
-alias key='cd $GROUP_HOME'
-alias me='cd $HOME'
 
 # SLURM
 alias srund="srun --mem=16G --time=12:00:00 -p datatransfer --pty bash"
@@ -55,14 +45,15 @@ case "$HOSTNAME" in
   # Linux default
   * ) 
     alias arch='uname -m'
+    alias platform='uname'
 
     # Useful websites
-    alias mpg_resources="open https://rena.mpdl.mpg.de/rena/"
-    alias oreilly="open https://learning.oreilly.com/home/"
-    alias mm="open https://minervamessenger.mpdl.mpg.de"
-    alias email="open https://webmail.mpiib-berlin.mpg.de"
     alias docs="open https://docs.mpcdf.mpg.de/doc/computing/viper-user-guide.html"
+    alias email="open https://webmail.mpiib-berlin.mpg.de"
     alias helpdesk="open https://helpdesk.mpcdf.mpg.de/mpcdf/SelfService/"
+    alias mm="open https://minervamessenger.mpdl.mpg.de"
+    alias mpg_resources="open https://rena.mpdl.mpg.de/rena/"
     alias nextcloud="open https://transfer.mpiib-berlin.mpg.de/"
+    alias oreilly="open https://learning.oreilly.com/home/"
   ;;
 esac

@@ -1,8 +1,11 @@
 #!/bin/bash
 
 alias ll='ls -lah'
-alias ..="cd .."
-alias ...="cd ../.."
+alias ..='cd ..'
+alias ...='cd ../..'
+
+alias mv='mv -i'
+alias rm='rm -i' # Can use -f to override interactive nags for destructive disk writes
 
 # SLURM
 alias srund="srun --mem=16G --time=12:00:00 -p datatransfer --pty bash"

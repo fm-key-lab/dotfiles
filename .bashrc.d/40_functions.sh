@@ -31,8 +31,6 @@ function cd {
     vcd $option
   fi
 } # end of cd
-function mv { builtin mv -i; }
-function rm { builtin rm -i; } # Can use -f to override interactive nags for destructive disk writes
 
 #
 # Misc

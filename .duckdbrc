@@ -2,5 +2,5 @@
 .prompt '🦆> '
 
 set threads = getenv('SLURM_CPUS_PER_TASK');
-set memory_limit = concat(getenv('SLURM_MEM_PER_NODE'), 'MB');
+set memory_limit = concat(cast(cast(getenv('SLURM_MEM_PER_NODE') as float) * .8 // 1 as varchar), 'MB');
 set enable_progress_bar = true;
